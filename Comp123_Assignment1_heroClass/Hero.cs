@@ -47,12 +47,16 @@ namespace Comp123_Assignment1_heroClass
             return hit; 
         }
 
-        private void hitDamage()
+        private int hitDamage()
         {
-            //calculates the hitDamage the Hero2 causes to the target on a hit
+            //calculates the hitDamage the Hero causes to the target on a hit
             //the damage will be calculated by multiplying the Hero's strength property by a number between 1 and 6
             //the method will return this value
 
+            int damage;
+            damage = this.strength * this.rnd.Next(1, 7);
+
+            return damage;
         }
 
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
