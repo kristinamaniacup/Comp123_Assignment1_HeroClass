@@ -6,6 +6,9 @@ namespace Comp123_Assignment1_heroClass
     {
         static void Main(string[] args)
         {
+            Hero myHero = new Hero("Dad");
+            myHero.fight();
+            myHero.show();
         }
     }
 }

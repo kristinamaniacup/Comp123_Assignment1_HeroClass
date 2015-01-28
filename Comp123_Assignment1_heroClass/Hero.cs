@@ -66,17 +66,29 @@ namespace Comp123_Assignment1_heroClass
             //if hitAttempt returns true, then it will call the hitDamage method
             //the damage will then be displayed in a message on the Console
 
+            bool hit = hitAttempt();
+            int damage = 0;
+            if (hit == true)
+            {
+                damage = hitDamage();
+                Console.WriteLine("Great hit! Damage {0}", damage);
+                damage = 0;
+            }
+            else
+            {
+                Console.WriteLine("You missed. Hit was unsuccessful.");
+            }
         }
 
         public void show() 
         {
             //method that will display the Hero's ability scores to the console
-            Console.WriteLine("+++++++++++++++++++++++++++++++");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++");
             Console.WriteLine("Name: {0}", this.name);
             Console.WriteLine("Strength: {0}", this.strength);
             Console.WriteLine("Speed: {0}", this.speed);
             Console.WriteLine("Health: {0}", this.health);
-            Console.WriteLine("+++++++++++++++++++++++++++++++");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++");
         }
 
     }
