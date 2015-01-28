@@ -5,13 +5,13 @@ namespace Comp123_Assignment1_heroClass
     class Hero
     {
         //PRIVATE PROPERTIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        int strength;
-        int speed;
-        int health;
+        private int strength;
+        private int speed;
+        private int health;
 
-
+        Random rnd = new Random();
         //PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        string name;
+        public string name;
 
         //CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public Hero(string name)
@@ -27,16 +27,24 @@ namespace Comp123_Assignment1_heroClass
         //PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private void generateAbilities()
         {
-            Random rnd = new Random();
             //randomly generates the ability numbers for the strength, speed & health properties (each ability will be an integer between 1-100)
-            this.strength = rnd.Next(1, 101);
-            this.speed = rnd.Next(1, 101);
-            this.health = rnd.Next(1, 101);
+            this.strength = this.rnd.Next(1, 101);
+            this.speed = this.rnd.Next(1, 101);
+            this.health = this.rnd.Next(1, 101);
         }
-        private void hitAttempt()
+        private bool hitAttempt()
         {
             //randomly determine if the Hero hits (this should be 20% of the time)
             //otherwise, it will return false
+            bool hit = false;
+            int attempt = this.rnd.Next(1, 101);
+
+            if (attempt < 21)
+            {
+                hit = true;
+            }
+
+            return hit; 
         }
 
         private void hitDamage()
@@ -44,6 +52,7 @@ namespace Comp123_Assignment1_heroClass
             //calculates the hitDamage the Hero2 causes to the target on a hit
             //the damage will be calculated by multiplying the Hero's strength property by a number between 1 and 6
             //the method will return this value
+
         }
 
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -52,18 +61,18 @@ namespace Comp123_Assignment1_heroClass
             //calls the hitAttempt method
             //if hitAttempt returns true, then it will call the hitDamage method
             //the damage will then be displayed in a message on the Console
+
         }
 
         public void show() 
         {
             //method that will display the Hero's ability scores to the console
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine(""); 
+            Console.WriteLine("+++++++++++++++++++++++++++++++");
+            Console.WriteLine("Name: {0}", this.name);
+            Console.WriteLine("Strength: {0}", this.strength);
+            Console.WriteLine("Speed: {0}", this.speed);
+            Console.WriteLine("Health: {0}", this.health);
+            Console.WriteLine("+++++++++++++++++++++++++++++++");
         }
 
     }
