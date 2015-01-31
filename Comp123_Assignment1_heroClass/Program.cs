@@ -21,6 +21,10 @@
  *             created the hitDamage method
  *             created the fight method
  *             created program header which indicates: author, date last modified, program description and revision history
+ *             
+ * 01/30/2015: Add additional comments
+ *             Played around with hitAttempt method 
+ *             
 */
 using System;
 

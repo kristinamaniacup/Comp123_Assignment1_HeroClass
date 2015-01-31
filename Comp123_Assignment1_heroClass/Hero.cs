@@ -9,7 +9,7 @@ namespace Comp123_Assignment1_heroClass
         private int speed;
         private int health;
 
-        Random rnd = new Random();
+        Random rnd = new Random(); //instance that can be used in multiple methods
         //PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public string name;
 
@@ -25,21 +25,21 @@ namespace Comp123_Assignment1_heroClass
         }
 
         //PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //randomly generates ability numbers for the Heros properties (each ability an integer between 1-100)
         private void generateAbilities()
         {
-            //randomly generates the ability numbers for the strength, speed & health properties (each ability will be an integer between 1-100)
             this.strength = this.rnd.Next(1, 101);
             this.speed = this.rnd.Next(1, 101);
             this.health = this.rnd.Next(1, 101);
         }
+
+        //determines if the Hero hits (should be 20% of the time) other it will return false
         private bool hitAttempt()
         {
-            //randomly determine if the Hero hits (this should be 20% of the time)
-            //otherwise, it will return false
             bool hit = false;
             int attempt = this.rnd.Next(1, 101);
 
-            if (attempt < 21)
+            if (attempt <= 20)
             {
                 hit = true;
             }
@@ -47,12 +47,10 @@ namespace Comp123_Assignment1_heroClass
             return hit; 
         }
 
+        //calculates the hitDamage the Hero causes to the target by multiply Hero's strength ability with a number between 1 and 6
+        //method will return value
         private int hitDamage()
         {
-            //calculates the hitDamage the Hero causes to the target on a hit
-            //the damage will be calculated by multiplying the Hero's strength property by a number between 1 and 6
-            //the method will return this value
-
             int damage;
             damage = this.strength * this.rnd.Next(1, 7);
 
@@ -60,11 +58,12 @@ namespace Comp123_Assignment1_heroClass
         }
 
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //calls the hitAttempt method
+        //if hitAttempt returns true, then it will call the hitDamage method
+        //the damage will then be displayed in a message on the Console
         public void fight()
         {
-            //calls the hitAttempt method
-            //if hitAttempt returns true, then it will call the hitDamage method
-            //the damage will then be displayed in a message on the Console
+            
 
             bool hit = hitAttempt();
             int damage = 0;
@@ -80,9 +79,9 @@ namespace Comp123_Assignment1_heroClass
             }
         }
 
+        //Utility method to display hero properties
         public void show() 
         {
-            //method that will display the Hero's ability scores to the console
             Console.WriteLine("++++++++++++++++++++++++++++++++++");
             Console.WriteLine("Name: {0}", this.name);
             Console.WriteLine("Strength: {0}", this.strength);
